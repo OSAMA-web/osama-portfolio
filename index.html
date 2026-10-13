@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="Osama Ghufran — AI/ML Engineer building practical LLM, RAG, and NLP systems." />
+  <title>Osama Ghufran | AI & Machine Learning</title>
+  <style>
+    :root {
+      --bg: #080c18;
+      --panel: rgba(18, 25, 45, .76);
+      --panel-solid: #11182b;
+      --text: #f4f6ff;
+      --muted: #a7b0c7;
+      --line: rgba(176, 190, 225, .16);
+      --accent: #a8f0d2;
+      --accent-2: #a5b4fc;
+      --max: 1120px;
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; color: var(--text); background:
+        radial-gradient(ellipse at 80% 0%, rgba(101, 116, 255, .16), transparent 35%),
+        radial-gradient(ellipse at 0% 28%, rgba(77, 219, 173, .09), transparent 30%), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .topbar { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid transparent; background: rgba(8, 12, 24, .72); backdrop-filter: blur(18px); }
+    .topbar.scrolled { border-color: var(--line); }
+    nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 750; letter-spacing: -.03em; }
+    .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; color: #07111b; background: var(--accent); font-size: .82rem; font-weight: 900; }
+    .nav-links { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: .91rem; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-cta { color: var(--bg) !important; background: var(--accent); padding: 10px 16px; border-radius: 999px; font-weight: 750; }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 12px; padding: 8px 11px; cursor: pointer; }
+    .hero { min-height: 690px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 64px; padding-block: 92px 105px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 7px 12px; border: 1px solid rgba(168,240,210,.22); border-radius: 999px; color: var(--accent); background: rgba(168,240,210,.06); font-size: .79rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(168,240,210,.1); }
+    h1 { font-size: clamp(3.2rem, 7vw, 5.9rem); line-height: .99; letter-spacing: -.075em; margin: 27px 0 23px; font-weight: 800; }
+    h1 .gradient { color: var(--accent); }
+    .hero-copy { color: var(--muted); font-size: clamp(1.02rem, 1.8vw, 1.17rem); max-width: 610px; margin: 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: 999px; padding: 13px 19px; font-weight: 750; font-size: .93rem; border: 1px solid var(--line); transition: transform .2s, border-color .2s, background .2s; cursor: pointer; }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(168,240,210,.55); }
+    .btn-primary { background: var(--accent); color: #07111b; border-color: var(--accent); }
+    .btn-secondary { background: rgba(255,255,255,.025); }
+    .micro-line { margin-top: 25px; color: #7f8aa7; font-size: .83rem; }
+    .hero-visual { position: relative; min-height: 400px; display: grid; place-items: center; }
+    .orbit { width: min(100%, 400px); aspect-ratio: 1; border: 1px solid rgba(165,180,252,.22); border-radius: 50%; position: relative; display: grid; place-items: center; background: radial-gradient(circle, rgba(165,180,252,.08), transparent 62%); }
+    .orbit:before, .orbit:after { content: ""; position: absolute; border: 1px solid rgba(168,240,210,.18); border-radius: 50%; inset: 12%; }
+    .orbit:after { inset: 25%; border-color: rgba(165,180,252,.24); }
+    .core { width: 142px; height: 142px; border-radius: 38px; display: grid; place-items: center; background: linear-gradient(145deg, #b4f8df, #9caafc); color: #0b1223; font-size: 2.25rem; font-weight: 900; letter-spacing: -.08em; box-shadow: 0 0 90px rgba(165,180,252,.22); z-index: 1; transform: rotate(-7deg); }
+    .float-card { position: absolute; z-index: 2; padding: 12px 15px; background: rgba(16,23,42,.9); border: 1px solid var(--line); border-radius: 15px; box-shadow: 0 16px 50px rgba(0,0,0,.2); font-size: .82rem; color: var(--muted); backdrop-filter: blur(12px); }
+    .float-card strong { display: block; color: var(--text); font-size: .93rem; }
+    .float-one { top: 12%; left: -2%; } .float-two { right: -3%; top: 37%; } .float-three { bottom: 10%; left: 8%; }
+    section { padding-block: 88px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 34px; }
+    .kicker { color: var(--accent); font-size: .79rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 800; }
+    h2 { margin: 8px 0 0; font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.055em; line-height: 1.1; }
+    .section-intro { color: var(--muted); max-width: 470px; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .surface { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+    .surface p { color: var(--muted); margin: 12px 0 0; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+    .stat { border: 1px solid var(--line); background: rgba(255,255,255,.025); border-radius: 16px; padding: 17px 15px; }
+    .stat strong { display: block; font-size: 1.45rem; letter-spacing: -.05em; }
+    .stat span { color: var(--muted); font-size: .78rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .skill-card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+    .skill-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: rgba(168,240,210,.09); color: var(--accent); font-size: 1.15rem; margin-bottom: 17px; }
+    .skill-card h3 { margin: 0; font-size: 1rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+    .tag { font-size: .76rem; color: #c4cce0; border: 1px solid var(--line); background: rgba(255,255,255,.025); padding: 5px 9px; border-radius: 999px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project { position: relative; overflow: hidden; background: linear-gradient(145deg, rgba(20,29,51,.96), rgba(13,18,33,.9)); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; min-height: 330px; transition: transform .22s, border-color .22s; }
+    .project:hover { transform: translateY(-4px); border-color: rgba(168,240,210,.38); }
+    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+    .project-number { color: var(--accent); font-size: .8rem; font-weight: 800; letter-spacing: .12em; }
+    .project-symbol { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 14px; font-size: 1.2rem; }
+    .project h3 { font-size: 1.35rem; letter-spacing: -.035em; margin: 22px 0 8px; }
+    .project p { color: var(--muted); margin: 0; font-size: .93rem; }
+    .project .tags { margin-top: 19px; }
+    .project-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 750; font-size: .88rem; margin-top: auto; padding-top: 23px; }
+    .timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .timeline-item { position: relative; padding: 26px 27px 27px 30px; border-left: 2px solid rgba(168,240,210,.5); background: var(--panel); border-radius: 0 18px 18px 0; border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .date { color: var(--accent); font-size: .8rem; font-weight: 800; letter-spacing: .04em; }
+    .timeline-item h3 { margin: 7px 0 4px; font-size: 1.1rem; }
+    .timeline-item p { color: var(--muted); margin: 8px 0 0; font-size: .92rem; }
+    .contact-panel { display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 30px; padding: clamp(28px, 5vw, 54px); background: linear-gradient(125deg, rgba(168,240,210,.1), rgba(165,180,252,.09)); border: 1px solid rgba(168,240,210,.2); border-radius: 28px; }
+    .contact-panel p { color: var(--muted); max-width: 580px; }
+    .contact-links { display: grid; gap: 11px; }
+    .contact-link { padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; background: rgba(8,12,24,.35); display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: .88rem; }
+    .contact-link span:first-child { color: var(--muted); }
+    footer { padding: 26px 0 36px; color: #77819d; font-size: .82rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 22px; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 20px; padding-top: 76px; }
+      .hero-visual { min-height: 370px; }
+      .orbit { width: min(80%, 360px); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(var(--max), calc(100% - 28px)); }
+      nav { height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 14px; right: 14px; flex-direction: column; align-items: stretch; gap: 0; padding: 10px; border: 1px solid var(--line); border-radius: 17px; background: #10172a; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px; }
+      .nav-cta { text-align: center; margin-top: 5px; }
+      .hero { min-height: 0; padding-block: 68px 55px; }
+      h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
+      .hero-visual { min-height: 310px; }
+      .float-card { font-size: .72rem; padding: 9px 11px; }
+      .float-one { left: 0; } .float-two { right: 0; } .float-three { bottom: 3%; }
+      .core { width: 112px; height: 112px; border-radius: 30px; }
+      section { padding-block: 60px; }
+      .about-grid, .projects-grid, .timeline, .contact-panel { grid-template-columns: 1fr; }
+      .surface, .project { padding: 23px; }
+      .stat-row { gap: 7px; }
+      .stat { padding: 12px 10px; }
+      .stat strong { font-size: 1.2rem; }
+      .stat span { font-size: .7rem; }
+      .skills-grid { gap: 10px; }
+      .skill-card { padding: 17px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Osama Ghufran home">
+        <span class="brand-mark">OG</span><span>Osama Ghufran</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a>
+        <a class="nav-cta" href="#contact">Let's connect ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-content reveal">
+        <div class="eyebrow"><span class="pulse"></span> AI · Machine Learning · GenAI</div>
+        <h1>Building useful<br><span class="gradient">AI systems.</span></h1>
+        <p class="hero-copy">I'm Osama Ghufran, an M.Tech Software Engineering student at Delhi Technological University. I build practical AI applications across LLMs, retrieval-augmented generation, NLP, and deep learning.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">Explore my work <span aria-hidden="true">↘</span></a>
+          <a class="btn btn-secondary" href="Osama_Ghufran_Resume.pdf" download>Download résumé ↓</a>
+        </div>
+        <p class="micro-line">GATE 2025 qualified · AIR 2892 · Teaching Assistant at DTU</p>
+      </div>
+      <div class="hero-visual reveal" aria-label="Abstract AI systems illustration">
+        <div class="orbit">
+          <div class="core">OG<span style="font-size:.65rem;display:block;letter-spacing:.02em;text-align:center">AI / ML</span></div>
+          <div class="float-card float-one"><strong>LLMs + RAG</strong>Grounded answers</div>
+          <div class="float-card float-two"><strong>Applied ML</strong>From data to model</div>
+          <div class="float-card float-three"><strong>Reliable systems</strong>APIs · tools · workflows</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <div class="section-head reveal"><div><div class="kicker">01 / About</div><h2>Curiosity, engineered<br>into real applications.</h2></div><p class="section-intro">I enjoy taking AI ideas beyond a notebook—connecting models, retrieval, tools, and interfaces into complete user-facing systems.</p></div>
+      <div class="about-grid">
+        <article class="surface reveal">
+          <h3>My approach</h3>
+          <p>I focus on practical problem-solving: understanding the task, building a clear pipeline, evaluating results, and making the application useful and dependable. My recent work spans agentic RAG, sentiment analysis, and computer vision.</p>
+        </article>
+        <div class="reveal">
+          <div class="surface"><h3>At a glance</h3><p>Computer Science background with a focus on applied AI, backend integration, and model evaluation.</p></div>
+          <div class="stat-row">
+            <div class="stat"><strong>97%</strong><span>ASL validation accuracy</span></div>
+            <div class="stat"><strong>27K+</strong><span>Labeled image samples</span></div>
+            <div class="stat"><strong>2025</strong><span>GATE qualified</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="skills">
+      <div class="section-head reveal"><div><div class="kicker">02 / Toolkit</div><h2>Skills I work with.</h2></div><p class="section-intro">A growing toolkit for building, evaluating, and shipping data-driven applications.</p></div>
+      <div class="skills-grid">
+        <article class="skill-card reveal"><div class="skill-icon">⌘</div><h3>Programming & Data</h3><div class="tags"><span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></article>
+        <article class="skill-card reveal"><div class="skill-icon">◈</div><h3>Machine Learning</h3><div class="tags"><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">CNNs</span><span class="tag">Evaluation</span></div></article>
+        <article class="skill-card reveal"><div class="skill-icon">✳</div><h3>GenAI & NLP</h3><div class="tags"><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">RAG</span><span class="tag">BM25</span><span class="tag">Ollama</span><span class="tag">ChromaDB</span></div></article>
+        <article class="skill-card reveal"><div class="skill-icon">↗</div><h3>Backend & Visuals</h3><div class="tags"><span class="tag">FastAPI</span><span class="tag">REST APIs</span><span class="tag">Gradio</span><span class="tag">Matplotlib</span><span class="tag">Plotly</span></div></article>
+      </div>
+    </section>
+
+    <section class="container" id="projects">
+      <div class="section-head reveal"><div><div class="kicker">03 / Selected work</div><h2>Projects with a purpose.</h2></div><p class="section-intro">A selection of applied AI projects, from retrieval pipelines to visual recognition.</p></div>
+      <div class="projects-grid">
+        <article class="project reveal">
+          <div class="project-top"><span class="project-number">PROJECT 01</span><span class="project-symbol">✈</span></div>
+          <h3>AirAssist AI — Agentic RAG Assistant</h3>
+          <p>An airline-focused assistant combining document question answering with tools for flight, weather, and currency queries. Uses stateful workflows and retrieval improvements for more relevant, context-aware responses.</p>
+          <div class="tags"><span class="tag">LangGraph</span><span class="tag">LangChain</span><span class="tag">FastAPI</span><span class="tag">ChromaDB</span><span class="tag">BM25</span><span class="tag">Reranking</span></div>
+          <a class="project-link" href="https://github.com/OSAMA-web/RAG_project_general" target="_blank" rel="noopener noreferrer">View project on GitHub <span>↗</span></a>
+        </article>
+        <article class="project reveal">
+          <div class="project-top"><span class="project-number">PROJECT 02</span><span class="project-symbol">◉</span></div>
+          <h3>YouTube Sentiment Analyzer</h3>
+          <p>An NLP application that analyzes YouTube comments, classifies sentiment as positive, neutral, or negative, and summarizes discussion themes using a locally hosted language model and an interactive dashboard.</p>
+          <div class="tags"><span class="tag">YouTube Data API</span><span class="tag">VADER</span><span class="tag">SmolLM2</span><span class="tag">Gradio</span><span class="tag">Plotly</span></div>
+          <a class="project-link" href="https://github.com/OSAMA-web/YouTube-Sentiment-Analyzer" target="_blank" rel="noopener noreferrer">View project on GitHub <span>↗</span></a>
+        </article>
+        <article class="project reveal">
+          <div class="project-top"><span class="project-number">PROJECT 03</span><span class="project-symbol">⌁</span></div>
+          <h3>Sign Language Recognition</h3>
+          <p>A convolutional neural network trained to recognize American Sign Language alphabet gestures from 27K+ labeled images, reaching 97% validation accuracy. Evaluated class-level performance using a confusion matrix.</p>
+          <div class="tags"><span class="tag">CNN</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Computer Vision</span></div>
+          <a class="project-link" href="https://github.com/OSAMA-web/Sign-Langugae-Detect-Model" target="_blank" rel="noopener noreferrer">View project on GitHub <span>↗</span></a>
+        </article>
+        <article class="project reveal">
+          <div class="project-top"><span class="project-number">WHAT'S NEXT</span><span class="project-symbol">＋</span></div>
+          <h3>Open to meaningful problems</h3>
+          <p>Interested in building AI products that are measurable, explainable, and useful. I'm keen to collaborate on applied ML, LLM applications, retrieval systems, and data-driven tools.</p>
+          <div class="tags"><span class="tag">Applied AI</span><span class="tag">Problem-solving</span><span class="tag">Collaboration</span></div>
+          <a class="project-link" href="#contact">Start a conversation <span>↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="experience">
+      <div class="section-head reveal"><div><div class="kicker">04 / Journey</div><h2>Education & experience.</h2></div></div>
+      <div class="timeline">
+        <article class="timeline-item reveal"><div class="date">AUG 2025 — PRESENT</div><h3>Teaching Assistant · Delhi Technological University</h3><p>Support faculty in core computer science subjects, resolve student doubts, review code for correctness and edge cases, and guide systematic debugging.</p></article>
+        <article class="timeline-item reveal"><div class="date">2025 — PRESENT</div><h3>M.Tech, Software Engineering</h3><p>Delhi Technological University (DTU). Focused on software engineering and applied AI development.</p></article>
+        <article class="timeline-item reveal"><div class="date">2019 — 2023</div><h3>B.Tech, Computer Science</h3><p>Jamia Hamdard University.</p></article>
+        <article class="timeline-item reveal"><div class="date">2025</div><h3>GATE Qualified · AIR 2892</h3><p>Qualified the Graduate Aptitude Test in Engineering (GATE) in 2025.</p></article>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <div class="contact-panel reveal">
+        <div><div class="kicker">05 / Contact</div><h2>Let's build something<br>that matters.</h2><p>Have an opportunity, a project idea, or a problem worth solving? I'd be happy to connect.</p><div class="hero-actions"><a class="btn btn-primary" href="mailto:osamaghufran278@gmail.com">Email me ↗</a><a class="btn btn-secondary" href="https://github.com/OSAMA-web" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a></div></div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:osamaghufran278@gmail.com"><span>Email</span><strong>osamaghufran278@gmail.com ↗</strong></a>
+          <a class="contact-link" href="tel:+918577012270"><span>Phone</span><strong>+91 85770 12270 ↗</strong></a>
+          <a class="contact-link" href="https://github.com/OSAMA-web" target="_blank" rel="noopener noreferrer"><span>GitHub</span><strong>@OSAMA-web ↗</strong></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><span>© <span id="year"></span> Osama Ghufran. Built with HTML, CSS & JavaScript.</span><a href="#home">Back to top ↑</a></div></footer>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const topbar = document.getElementById('topbar');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.textContent = open ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }));
+    window.addEventListener('scroll', () => topbar.classList.toggle('scrolled', window.scrollY > 12), { passive: true });
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+    const sections = sectionLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          sectionLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    sections.forEach(section => sectionObserver.observe(section));
+  </script>
+</body>
+</html>
